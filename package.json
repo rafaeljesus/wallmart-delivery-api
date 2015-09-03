@@ -4,13 +4,15 @@
   "description": "Wallmart Delivery Rest API",
   "main": "app.js",
   "scripts": {
-    "start": "iojs bin/www.js"
+    "start": "iojs bin/www.js",
+    "test": "NODE_ENV=test iojs `which gulp`"
   },
   "devDependencies": {
     "chai": "^3.2.0",
     "co-mocha": "^1.1.2",
     "gulp": "^3.9.0",
     "gulp-istanbul": "^0.10.0",
+    "gulp-jshint": "^1.11.2",
     "gulp-load-plugins": "^0.10.0",
     "gulp-mocha": "^2.1.3",
     "jshint-stylish": "^2.0.1",
