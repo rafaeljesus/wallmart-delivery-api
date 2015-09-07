@@ -12,7 +12,7 @@ describe('MapsControllerSpec', function() {
   let maps
 
   beforeEach(function() {
-    maps = require('../fixture/maps')
+    maps = require('../fixture/maps')()
   })
 
   describe('POST /v1/maps', function() {

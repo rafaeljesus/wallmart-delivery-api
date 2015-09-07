@@ -1,6 +1,7 @@
 'use strict'
 
 const Maps = require('./collection')
+  , Graph  = require('../../lib/graph')
 
 exports.create = function* (next) {
   let map = this.request.body
@@ -8,6 +9,22 @@ exports.create = function* (next) {
   try {
     this.body = yield Maps.save(map)
     this.status = 201
+  } catch(err) {
+    this.throw(500, err)
+  }
+}
+
+exports.show = function* (next) {
+  let name = this.params.name
+    , query = this.query
+
+  try {
+    let doc = yield Maps.findByName(name)
+      , graph = Graph(doc.routes)
+      , routes = graph.findShortestPathBetween(query.src, query.target)
+      , cost = (query.autonomy / query.liter) * routes.distance
+
+    this.body = {cost: cost, points: routes.points}
   } catch(err) {
     this.throw(500, err)
   }

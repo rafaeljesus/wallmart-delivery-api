@@ -14,6 +14,8 @@ exports.save = function* (map, options) {
 }
 
 exports.findByName = function* (name) {
+  let query = {name: name}
+  return yield maps.find(query)
 }
 
 exports.remove = function* () {

@@ -39,9 +39,14 @@ describe('MapCollectionSpec', function() {
 
     context('.update', function() {
 
-      beforeEach(function() {
+      beforeEach(function* () {
         let newRoute = {src: 'D', target: 'F', distance: 45.0}
         maps.routes.push(newRoute)
+        try {
+          yield Maps.save(maps)
+        } catch(err) {
+          expect(err).to.not.be.ok
+        }
       })
 
       it('should update a maps collection', function* () {
@@ -53,7 +58,26 @@ describe('MapCollectionSpec', function() {
         }
       })
     })
+  })
 
+  describe('.findByName', function() {
+
+    beforeEach(function* () {
+      try {
+        yield Maps.save(maps)
+      } catch(err) {
+        expect(err).to.not.be.ok
+      }
+    })
+
+    it('should find by name', function* () {
+      try {
+        let map = Maps.findByName(maps.name)
+        expect(map).to.be.ok
+      } catch(err) {
+        expect(err).to.not.be.ok
+      }
+    })
   })
 
 })
