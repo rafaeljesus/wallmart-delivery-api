@@ -5,8 +5,12 @@ const monk  = require('monk')
   , db      = monk('localhost/wall')
   , maps    = wrap(db.get('maps'))
 
-exports.create = function* (map) {
-  return yield maps.insert(map)
+exports.save = function* (map, options) {
+  options || (options = {})
+  options.upsert = true
+  let query = {name: map.name}
+  let update = {routes: map.routes}
+  return yield maps.findAndModify(query, update, options)
 }
 
 exports.findByName = function* (name) {

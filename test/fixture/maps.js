@@ -3,7 +3,8 @@
 module.exports = function() {
 
   return {
-    SP: [{
+    name: 'SP',
+    routes: [{
       src: 'A',
       target: 'B',
       distance: 10.0

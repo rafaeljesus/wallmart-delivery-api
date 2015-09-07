@@ -7,10 +7,10 @@ const chai      = require('chai')
 describe('GraphSpec', function() {
 
   let graph
-  let routes = require('../fixture/routes')()
+  let map = require('../fixture/maps')()
 
   beforeEach(function() {
-    graph = Graph(routes.SP)
+    graph = Graph(map.routes)
   })
 
   describe('.constructor', function() {
