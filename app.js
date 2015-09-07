@@ -6,7 +6,6 @@ const koa           = require('koa')
   , logger          = require('koa-logger')
   , cors            = require('kcors')
   , APImaps         = require('./api/maps')
-  , APIroutes       = require('./api/routes')
   , app             = koa()
 
 let handleErr = function* (next) {
@@ -24,7 +23,6 @@ app.use(koaBody())
 app.use(logger())
 app.use(cors())
 app.use(mount('/v1/maps', APImaps.middleware()))
-app.use(mount('/v1/routes', APIroutes.middleware()))
 app.use(handleErr)
 
 module.exports = app
