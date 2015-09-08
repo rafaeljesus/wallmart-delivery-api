@@ -38,11 +38,16 @@ por isso é importante pensar em requisitos não funcionais também!!
 ## Built with
 - [iojs](https://iojs.org) &mdash; Back end is a iojs.
 - [koa](http://koajs.com) &mdash; API is a KOA app. It respond to requests RESTfully in JSON.
+- [mongodb](https://www.mongodb.org) &mdash; Database that stores json documents.
 
 ## API
 
 ##### Maps
-(POST /v1/maps) create a map
+(POST /v1/maps) create a map 
+> Ex {name: 'SP', routes: [{src, 'A', target: 'B', disance: 10}]}}
+
+(GET /v1/maps/:name) show shortest path
+> Ex /v1/maps/SP?autonomy=10&liter=2.5
 
 ## Maintaners
 
