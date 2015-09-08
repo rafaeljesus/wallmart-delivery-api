@@ -3,12 +3,11 @@
 const Maps = require('./collection')
   , Graph  = require('../../lib/graph')
 
-exports.create = function* (next) {
+exports.save = function* (next) {
   let map = this.request.body
 
   try {
     this.body = yield Maps.save(map)
-    this.status = 201
   } catch(err) {
     this.throw(500, err)
   }
@@ -22,11 +21,10 @@ exports.show = function* (next) {
     let doc = yield Maps.findByName(name)
       , graph = Graph(doc.routes)
       , routes = graph.findShortestPathBetween(query.src, query.target)
-      , cost = (query.autonomy / query.liter) * routes.distance
+      , cost = (routes.distance / query.autonomy) * query.liter
 
     this.body = {cost: cost, points: routes.points}
   } catch(err) {
-    console.log(err)
     this.throw(500, err)
   }
 }

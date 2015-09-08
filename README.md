@@ -36,18 +36,18 @@ Lembre-se de que iremos executar seu código com malhas beeemm mais complexas,
 por isso é importante pensar em requisitos não funcionais também!!
 
 ## Built with
-- [iojs](https://iojs.org) &mdash; Back end is a iojs.
-- [koa](http://koajs.com) &mdash; API is a KOA app. It respond to requests RESTfully in JSON.
-- [mongodb](https://www.mongodb.org) &mdash; Database that stores json documents.
+- [iojs](https://iojs.org) &mdash; Back end is a iojs. Bringing ES6 to the Node Community!
+- [koa](http://koajs.com) &mdash; API is a KOA app. Next generation web framework for nodejs/iojs.
+- [mongodb](https://www.mongodb.org) &mdash; Flexible Data Model, Expressive Query Language and Highly Scalable.
 
 ## API
 
 ##### Maps
-(POST /v1/maps) create a map
+(POST /v1/maps) create or update (save) a map
 > Ex {name: 'SP', routes: [{src, 'A', target: 'B', disance: 10}]}}
 
 (GET /v1/maps/:name) show shortest path
-> Ex /v1/maps/SP?autonomy=10&liter=2.5
+> Ex /v1/maps/SP?src=A&target=D&autonomy=10&liter=2.50
 
 ## Setup
 * install [iojs](https://iojs.org)
