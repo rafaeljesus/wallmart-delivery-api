@@ -40,8 +40,6 @@ describe('MapCollectionSpec', function() {
     context('.update', function() {
 
       beforeEach(function* () {
-        let newRoute = {src: 'D', target: 'F', distance: 45.0}
-        maps.routes.push(newRoute)
         try {
           yield Maps.save(maps)
         } catch(err) {
@@ -50,6 +48,8 @@ describe('MapCollectionSpec', function() {
       })
 
       it('should update a maps collection', function* () {
+        let newRoute = {src: 'D', target: 'F', distance: 45.0}
+        maps.routes.push(newRoute)
         try {
           let res = yield Maps.save(maps)
           expect(res.routes).to.have.length(7)
@@ -72,7 +72,7 @@ describe('MapCollectionSpec', function() {
 
     it('should find by name', function* () {
       try {
-        let map = Maps.findByName(maps.name)
+        let map = yield Maps.findByName(maps.name)
         expect(map).to.be.ok
       } catch(err) {
         expect(err).to.not.be.ok

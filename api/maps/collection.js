@@ -8,20 +8,17 @@ const monk  = require('monk')
 exports.save = function* (map, options) {
   options || (options = {})
   options.upsert = true
+  options.new = true
   let query = {name: map.name}
-  let update = {routes: map.routes}
+  let update = map
   return yield maps.findAndModify(query, update, options)
 }
 
 exports.findByName = function* (name) {
   let query = {name: name}
-  return yield maps.find(query)
+  return yield maps.findOne(query)
 }
 
 exports.remove = function* () {
-  try {
-    return yield maps.remove()
-  } catch(err) {
-    throw err
-  }
+  return yield maps.remove()
 }

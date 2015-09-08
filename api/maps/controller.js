@@ -26,6 +26,7 @@ exports.show = function* (next) {
 
     this.body = {cost: cost, points: routes.points}
   } catch(err) {
+    console.log(err)
     this.throw(500, err)
   }
 }
