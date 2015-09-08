@@ -10,8 +10,7 @@ exports.save = function* (map, options) {
   options.upsert = true
   options.new = true
   let query = {name: map.name}
-  let update = map
-  return yield maps.findAndModify(query, update, options)
+  return yield maps.findAndModify(query, map, options)
 }
 
 exports.findByName = function* (name) {

@@ -55,7 +55,7 @@ por isso é importante pensar em requisitos não funcionais também!!
 * cd wallmart-delivery-api
 * npm i
 * cd vagrant-mongodb && vagrant up
-* npm test && npm start
+* npm test && npm run seed && npm start
 
 ## Maintaners
 
