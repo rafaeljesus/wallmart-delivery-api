@@ -43,11 +43,19 @@ por isso é importante pensar em requisitos não funcionais também!!
 ## API
 
 ##### Maps
-(POST /v1/maps) create a map 
+(POST /v1/maps) create a map
 > Ex {name: 'SP', routes: [{src, 'A', target: 'B', disance: 10}]}}
 
 (GET /v1/maps/:name) show shortest path
 > Ex /v1/maps/SP?autonomy=10&liter=2.5
+
+## Setup
+* install [iojs](https://iojs.org)
+* git clone https://github.com/rafaeljesus/wallmart-delivery-api.git
+* cd wallmart-delivery-api
+* npm i
+* cd vagrant-mongodb && vagrant up
+* npm test && npm start
 
 ## Maintaners
 
