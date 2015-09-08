@@ -1,4 +1,4 @@
-### Wall Vagrant ###
+### Wal Vagrant ###
 
 * This project has these VMs (vm_name): mongodb
 
