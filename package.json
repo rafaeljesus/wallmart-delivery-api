@@ -39,7 +39,7 @@
     "priorityqueuejs": "^1.0.0"
   },
   "engines": {
-    "iojs": "3.0.0"
+    "iojs": "3.3.0"
   },
   "keywords": [
     "API",

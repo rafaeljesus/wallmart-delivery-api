@@ -6,7 +6,6 @@ services:
 before_script:
   - export PATH="$PATH:$(npm bin)"
 script:
-  - npm update
   - npm test
 before_script:
   - sleep 15
