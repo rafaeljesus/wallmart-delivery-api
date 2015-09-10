@@ -50,7 +50,7 @@ por isso é importante pensar em requisitos não funcionais também!!
 > Ex /v1/maps/SP?src=A&target=D&autonomy=10&liter=2.50
 
 ## Setup
-* install [iojs](https://iojs.org)@v2.5.0
+* install [iojs](https://iojs.org)@v3.0.0
 * git clone https://github.com/rafaeljesus/wallmart-delivery-api.git
 * cd wallmart-delivery-api
 * npm i
