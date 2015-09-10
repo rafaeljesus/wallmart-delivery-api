@@ -21,7 +21,7 @@ exports.show = function* (next) {
     let doc = yield Maps.findByName(name)
       , graph = Graph(doc.routes)
       , routes = graph.findShortestPathBetween(query.src, query.target)
-      , cost = (routes.distance / query.autonomy) * query.liter
+      , cost = routes.distance / query.autonomy * query.liter
 
     this.body = {cost: cost, points: routes.points}
   } catch(err) {
