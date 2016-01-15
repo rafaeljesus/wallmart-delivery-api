@@ -1,7 +1,6 @@
 'use strict'
 
-module.exports = function() {
-
+module.exports = () => {
   return {
     name: 'SP',
     routes: [{
@@ -30,5 +29,4 @@ module.exports = function() {
       distance: 30.0
     }]
   }
-
 }

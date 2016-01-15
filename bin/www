@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const http = require('http')
+  , log = require('../lib/log')
+  , app = require('../')
+  , port = process.env.PORT || 3000
+
+http.globalAgent.maxSockets = Infinity
+http.createServer(app.callback())
+
+app.listen(port)
+
+log.info(`Wallmart Delivery API - port ${port}`)

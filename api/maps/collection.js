@@ -1,23 +1,31 @@
 'use strict'
 
-const monk  = require('monk')
-  , wrap    = require('co-monk')
-  , db      = monk('localhost/wall')
-  , maps    = wrap(db.get('maps'))
+const Promise = require('bluebird')
+  , mongoose = require('mongoose')
+  , Schema = mongoose.Schema
 
-exports.save = function* (map, options) {
+Promise.promisifyAll(mongoose)
+
+const Maps = Schema({
+  name: String,
+  routes: [{
+    src: String,
+    target: String,
+    distance: Number
+  }],
+})
+
+Maps.statics.save = function(data, options) {
   options || (options = {})
   options.upsert = true
   options.new = true
-  let query = {name: map.name}
-  return yield maps.findAndModify(query, map, options)
+  const query = {name: data.name}
+  return this.findOneAndUpdateAsync(query, data, options)
 }
 
-exports.findByName = function* (name) {
-  let query = {name: name}
-  return yield maps.findOne(query)
+Maps.statics.findByName = function(name) {
+  const query = {name: name}
+  return this.findOneAsync(query)
 }
 
-exports.remove = function* () {
-  return yield maps.remove()
-}
+module.exports = mongoose.model('maps', Maps)

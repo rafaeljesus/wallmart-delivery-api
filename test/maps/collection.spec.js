@@ -1,82 +1,53 @@
 'use strict'
 
-const chai    = require('chai')
-  , mocha     = require('mocha')
-  , expect    = chai.expect
-  , Maps      = require('../../api/maps/collection')
+const chai = require('chai')
+  , mocha = require('mocha')
+  , expect = chai.expect
+  , Maps = require('../../api/maps/collection')
 
-require('co-mocha')(mocha)
-
-describe('MapCollectionSpec', function() {
+describe('MapsCollectionSpec', () => {
 
   let maps
 
-  beforeEach(function() {
+  beforeEach(() => {
     maps = require('../fixture/maps')()
   })
 
-  afterEach(function* () {
-    try {
-      yield Maps.remove()
-    } catch(err) {
-      expect(err).to.not.be.ok
-    }
-  })
+  afterEach(() => Maps.removeAsync())
 
-  describe('.save', function() {
+  describe('.save', () => {
 
-    context('.create', function() {
+    context('.create', () => {
 
-      it('should create a maps collection', function* () {
-        try {
-          let res = yield Maps.save(maps)
-          expect(res._id).to.be.ok
-        } catch(err) {
-          expect(err).to.not.be.ok
-        }
+      it('should create a maps collection', () => {
+        return Maps.save(maps).then(doc => {
+          expect(doc._id).to.exist
+        })
       })
     })
 
-    context('.update', function() {
+    context('.update', () => {
 
-      beforeEach(function* () {
-        try {
-          yield Maps.save(maps)
-        } catch(err) {
-          expect(err).to.not.be.ok
-        }
-      })
+      beforeEach(() => Maps.save(maps))
 
-      it('should update a maps collection', function* () {
-        let newRoute = {src: 'D', target: 'F', distance: 45.0}
+      it('should update a maps collection', () => {
+        const newRoute = {src: 'D', target: 'F', distance: 45.0}
         maps.routes.push(newRoute)
-        try {
-          let res = yield Maps.save(maps)
-          expect(res.routes).to.have.length(7)
-        } catch(err) {
-          expect(err).to.not.be.ok
-        }
+        return Maps.save(maps).then(doc => {
+          expect(doc.routes).to.have.length(7)
+        })
       })
     })
   })
 
-  describe('.findByName', function() {
+  describe('.findByName', () => {
 
-    beforeEach(function* () {
-      try {
-        yield Maps.save(maps)
-      } catch(err) {
-        expect(err).to.not.be.ok
-      }
-    })
+    beforeEach(() => Maps.save(maps))
 
-    it('should find by name', function* () {
-      try {
-        let map = yield Maps.findByName(maps.name)
-        expect(map).to.be.ok
-      } catch(err) {
-        expect(err).to.not.be.ok
-      }
+    it('should find by name', () => {
+      return Maps.
+        findByName(maps.name).
+        then(doc => expect(doc).to.exist)
     })
   })
 

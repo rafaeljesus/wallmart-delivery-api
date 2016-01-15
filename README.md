@@ -1,9 +1,8 @@
-## walmart-delivery-api
+## Walmart Delivery API
 
 [![Build Status](https://travis-ci.org/rafaeljesus/wallmart-delivery-api.svg?branch=master)](https://travis-ci.org/rafaeljesus/wallmart-delivery-api) [![Code Climate](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api/badges/gpa.svg)](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api) [![Test Coverage](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api/badges/coverage.svg)](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api/coverage)
 
-#### Description
-
+## Description
 : Entregando mercadorias
 
 O Walmart esta desenvolvendo um novo sistema de logistica e sua ajuda é muito importante neste momento.
@@ -37,30 +36,34 @@ Lembre-se de que iremos executar seu código com malhas beeemm mais complexas,
 por isso é importante pensar em requisitos não funcionais também!!
 
 ## Built with
-- [iojs](https://iojs.org) &mdash; Back end is a iojs. Bringing ES6 to the Node Community!
-- [koa](http://koajs.com) &mdash; API is a KOA app. Next generation web framework for nodejs/iojs.
-- [mongodb](https://www.mongodb.org) &mdash; Flexible Data Model, Expressive Query Language and Highly Scalable.
+- [nodejs](https://https://nodejs.org) Backend is a node-v.5.4.1.
+- [koa](http://koajs.com) API is a KOA app. It respond to requests RESTfully in JSON.
+- [Mongodb](https://www.mongodb.com) Mongodb as a data store.
 
-## API
+## Running tests
+To run a suite tests execute:
+```bash
+npm test
+```
 
-##### Maps
-(POST /v1/maps) create or update (save) a map
-> Ex {name: 'SP', routes: [{src, 'A', target: 'B', disance: 10}]}}
+## Docker
+This repository has automated image builds on hub.docker.com.
 
-(GET /v1/maps/:name) show shortest path
-> Ex /v1/maps/SP?src=A&target=D&autonomy=10&liter=2.50
+Use [docker-mongodb](https://github.com/rafaeljesus/docker-mongodb) and run command described there
 
-## Setup
-* install [iojs](https://iojs.org)@v3.0.0
-* git clone https://github.com/rafaeljesus/wallmart-delivery-api.git
-* cd wallmart-delivery-api
-* npm i
-* cd vagrant-mongodb && vagrant up
-* npm test && npm run seed && npm start
+Finally run:
+```
+$ docker-machine start default
+$ eval $(docker-machine env default)
+$ docker run -it -e "NODE_ENV=development" -v "$(pwd)":/data --link mongo:mongo -w /data -p 3000:3000 rafaeljesus/wallmart-delivery-api
+$ curl `docker-machine ip default`:3000
+```
+
+## API documentation
+We use source code comments to add documentation.
+
+You can browse an HTML documenation at /apidoc/index.html
 
 ## Maintaners
 
 * [Rafael Jesus](https://github.com/rafaeljesus)
-
-## License
-wallmart-delivery-api is released under the [MIT License](http://www.opensource.org/licenses/MIT).
