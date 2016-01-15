@@ -1,6 +1,12 @@
 ## Walmart Delivery API
 
-[![Build Status](https://travis-ci.org/rafaeljesus/wallmart-delivery-api.svg?branch=master)](https://travis-ci.org/rafaeljesus/wallmart-delivery-api) [![Code Climate](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api/badges/gpa.svg)](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api) [![Test Coverage](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api/badges/coverage.svg)](https://codeclimate.com/github/rafaeljesus/wallmart-delivery-api/coverage)
+[ ![Codeship Status for rafaeljesus/wallmart-delivery-api](https://codeship.com/projects/1de44610-9daf-0133-3763-5e859e904c15/status?branch=master)](https://codeship.com/projects/127563)
+[![Docker Image Size](https://img.shields.io/imagelayers/image-size/rafaeljesus/wallmart-delivery-api/latest.svg)](https://hub.docker.com/r/rafaeljesus/wallmart-delivery-api/)
+[![Docker Image Pulls](https://img.shields.io/docker/pulls/rafaeljesus/wallmart-delivery-api.svg)](https://hub.docker.com/r/rafaeljesus/wallmart-delivery-api/) 
+[![bitHound Overall Score](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api/badges/score.svg)](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api)
+[![bitHound Dependencies](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api/badges/dependencies.svg)](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api/badges/devDependencies.svg)](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api/master/dependencies/npm)
+[![bitHound Code](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api/badges/code.svg)](https://www.bithound.io/github/rafaeljesus/wallmart-delivery-api)
 
 ## Description
 : Entregando mercadorias
